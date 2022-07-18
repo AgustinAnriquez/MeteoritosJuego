@@ -220,7 +220,7 @@ tracks/7/keys = {
 "values": [ true, false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("ExplosionSFX:playing")
+tracks/8/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -327,6 +327,5 @@ texture = ExtResource( 1 )
 autoplay = "Explode"
 anims/Explode = SubResource( 17 )
 
-[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-bus = "SFX"
