@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/escudoCompleto.png-bc3e576587abef3c6262f31a53bd9616.stex"
+path="res://.import/meteorito_peq1.png-c96cdc0b10919fa8e6a2f9a988695217.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Player/Escudo/escudoCompleto.png"
-dest_files=[ "res://.import/escudoCompleto.png-bc3e576587abef3c6262f31a53bd9616.stex" ]
+source_file="res://Juego/Explosiones/MeteoritoExplosion/meteorito_peq1.png"
+dest_files=[ "res://.import/meteorito_peq1.png-c96cdc0b10919fa8e6a2f9a988695217.stex" ]
 
 [params]
 
