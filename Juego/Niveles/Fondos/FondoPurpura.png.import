@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/meteorito_med1.png-60c90a27dab208960aaee8956b6c79bd.stex"
+path="res://.import/FondoPurpura.png-708e49d86346f1821a39303472b26af3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Explosiones/MeteoritoExplosion/meteorito_med1.png"
-dest_files=[ "res://.import/meteorito_med1.png-60c90a27dab208960aaee8956b6c79bd.stex" ]
+source_file="res://Juego/Niveles/Fondos/FondoPurpura.png"
+dest_files=[ "res://.import/FondoPurpura.png-708e49d86346f1821a39303472b26af3.stex" ]
 
 [params]
 
