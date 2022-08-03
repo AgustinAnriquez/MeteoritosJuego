@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/player_orange.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Naves/Player/MaterialFisico.tres" type="PhysicsMaterial" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Juego/Naves/Player/Motor/MotorSFX.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/SFX/impacto.tres" type="AudioStream" id=10]
 [ext_resource path="res://Juego/Naves/Player/Escudo/Escudo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Naves/Player/CamaraPlayer.gd" type="Script" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.1006
@@ -68,6 +69,7 @@ shape = SubResource( 1 )
 
 [node name="Canion" parent="." instance=ExtResource( 4 )]
 proyectil = ExtResource( 5 )
+danio_proyectil = 10
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]
 position = Vector2( 0, -33 )
@@ -82,6 +84,7 @@ bus = "SFX"
 
 [node name="LaserBeam2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 38.1126, 0 )
+radio_danio = 50
 
 [node name="EstelaPuntoInicio" type="Position2D" parent="."]
 
@@ -109,6 +112,9 @@ bus = "SFX"
 
 [node name="CamaraPlayer" type="Camera2D" parent="."]
 current = true
+script = ExtResource( 12 )
+
+[node name="TweenZoom" type="Tween" parent="CamaraPlayer"]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

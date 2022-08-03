@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Juego/Niveles/Fondos/FondoPurpura.png" type="Texture" id=8]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 
 [node name="nivelTest" type="Node2D"]
 script = ExtResource( 3 )
@@ -38,9 +39,14 @@ position = Vector2( 1832.59, 606.782 )
 tipo_peligro = "Meteorite"
 
 [node name="CamaraNivel" type="Camera2D" parent="."]
+script = ExtResource( 11 )
+
+[node name="TweenZoom" type="Tween" parent="CamaraNivel"]
 
 [node name="TweenCamara" type="Tween" parent="."]
 
 [node name="icon" type="Sprite" parent="."]
 position = Vector2( 1221.5, 911.515 )
 texture = ExtResource( 10 )
+
+[connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

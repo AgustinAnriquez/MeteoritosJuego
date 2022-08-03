@@ -4,7 +4,7 @@ extends Node2D
 
 ## Atributos
 var spawners:Array
-var cantidad_meteoritos:int = 10
+var cantidad_meteoritos:int = 1
 var intervalo_spawn:float = 1.2
 
 ## Constructor
@@ -15,9 +15,20 @@ func crear(pos: Vector2, meteoritos: int) -> void:
 ## Metodos
 func _ready() -> void:
 	almacenar_spawners()
+	print("se ejecuta ready")
+	conectar_seniales_detectores()
 	$SpawnTimer.wait_time = intervalo_spawn
 
 ## Metodos custom
+func conectar_seniales_detectores() -> void:
+	for detector in $DetectorFueraZona.get_children():
+		detector.connect("body_entered", self, "_on_detector_body_entered")
+		print("entro en sector")
+
+func _on_detector_body_entered(body:Node) -> void:
+	body.set_esta_en_sector(false)
+	print("Se ejecuta detector")
+
 func almacenar_spawners() -> void:
 	for spawner in $Spawners.get_children():
 		spawners.append(spawner)
