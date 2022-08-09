@@ -27,8 +27,9 @@ position = Vector2( 1036.39, 687.706 )
 environment = ExtResource( 2 )
 
 [node name="Fondo" type="Sprite" parent="."]
+visible = false
 position = Vector2( 3238.12, 272.548 )
-scale = Vector2( 38.6958, 22.4191 )
+scale = Vector2( 256, 256 )
 z_index = -2
 z_as_relative = false
 texture = ExtResource( 8 )
@@ -50,7 +51,19 @@ script = ExtResource( 11 )
 position = Vector2( 1221.5, 911.515 )
 texture = ExtResource( 10 )
 
-[node name="EstacionRecarga" parent="." instance=ExtResource( 12 )]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 256, 256 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 1536.38, 120.098 )
+scale = Vector2( 256, 256 )
+texture = ExtResource( 8 )
+
+[node name="ContenedorEstaciones" type="Node" parent="."]
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 12 )]
 position = Vector2( 449.492, 461.479 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
