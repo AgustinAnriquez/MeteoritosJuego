@@ -7,8 +7,11 @@ export var cast_speed := 7000.0
 export var max_length := 1400.0
 export var growth_time := 0.1
 export var radio_danio:int = 4
+export var energia:float = 4.0
+export var radio_desgaste:float = -1.0
 
 var is_casting := false setget set_is_casting
+var energia_original:float
 
 onready var fill := $FillLine2D
 onready var tween := $Tween
@@ -23,6 +26,7 @@ onready var line_width: float = fill.width
 func _ready() -> void:
 	set_physics_process(false)
 	fill.points[1] = Vector2.ZERO
+	energia_original = energia
 
 
 func _physics_process(delta: float) -> void:
@@ -64,7 +68,12 @@ func cast_beam(delta: float) -> void:
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
-
+	
+	if energia <= 0.0:
+		set_is_casting(false)
+		return
+	
+	controlar_energia(radio_desgaste *delta)
 
 func appear() -> void:
 	if tween.is_active():
@@ -79,4 +88,9 @@ func disappear() -> void:
 	tween.interpolate_property(fill, "width", fill.width, 0, growth_time)
 	tween.start()
 
+func controlar_energia(consumo:float) -> void:
+	energia += consumo
+	if energia > energia_original:
+		energia = energia_original
+	print("Energia Laser;", energia)
 

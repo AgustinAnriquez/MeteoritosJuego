@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
 
 [node name="nivelTest" type="Node2D"]
 script = ExtResource( 3 )
@@ -26,7 +27,7 @@ position = Vector2( 1036.39, 687.706 )
 environment = ExtResource( 2 )
 
 [node name="Fondo" type="Sprite" parent="."]
-position = Vector2( 2842.57, 266.555 )
+position = Vector2( 3238.12, 272.548 )
 scale = Vector2( 38.6958, 22.4191 )
 z_index = -2
 z_as_relative = false
@@ -48,5 +49,8 @@ script = ExtResource( 11 )
 [node name="icon" type="Sprite" parent="."]
 position = Vector2( 1221.5, 911.515 )
 texture = ExtResource( 10 )
+
+[node name="EstacionRecarga" parent="." instance=ExtResource( 12 )]
+position = Vector2( 449.492, 461.479 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
