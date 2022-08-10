@@ -1,7 +1,7 @@
 #EnemigoDummy.gd
 extends Node2D
 
-export var hitpoints:float = 10.0
+export var hitpoints:float = 30.0
 
 ## Metodos
 

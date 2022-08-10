@@ -1,16 +1,12 @@
 extends NaveBase
 class_name EnemigoBase
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	canion.set_esta_disparando(true)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+## Señales Internas
+func _on_body_entered(body: Node) -> void:
+	._on_body_entered(body)
+	if body is Player:
+		body.destruir()
+		destruir()

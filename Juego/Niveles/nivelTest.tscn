@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=13]
 
 [node name="nivelTest" type="Node2D"]
 script = ExtResource( 3 )
@@ -65,5 +66,8 @@ position = Vector2( 449.492, 461.479 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1012.46, 417.556 )
+
+[node name="EnemigoInterceptor" parent="." instance=ExtResource( 13 )]
+position = Vector2( 1048.25, 766.032 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
