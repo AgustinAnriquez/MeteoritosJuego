@@ -6,14 +6,14 @@
 [ext_resource path="res://Juego/Naves/Enemigo/SpriteSpawnEnemigo.png" type="Texture" id=4]
 [ext_resource path="res://Juego/Proyectiles/ProyectilEnemigo.tscn" type="PackedScene" id=5]
 
-[sub_resource type="PhysicsMaterial" id=9]
+[sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 bounce = 0.5
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 77.0608, 64.0845 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteSpawn:visible")
@@ -76,8 +76,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "spawn"
+[sub_resource type="Animation" id=4]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteSpawn:visible")
@@ -140,18 +139,18 @@ tracks/4/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 420.393
-
 [sub_resource type="CircleShape2D" id=5]
-radius = 908.439
+radius = 432.44
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 608.696
 
 [node name="EnemigoInterceptor" instance=ExtResource( 1 )]
 z_index = 30
 z_as_relative = false
 collision_layer = 2
-collision_mask = 9
-physics_material_override = SubResource( 9 )
+collision_mask = 11
+physics_material_override = SubResource( 1 )
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 2 )
@@ -163,7 +162,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="Canion" parent="." index="2"]
 proyectil = ExtResource( 5 )
@@ -181,27 +180,29 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 autoplay = "spawn"
-anims/default = SubResource( 7 )
-anims/spawn = SubResource( 3 )
+anims/default = SubResource( 3 )
+anims/spawn = SubResource( 4 )
 
 [node name="SpriteSpawn" type="Sprite" parent="." index="5"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 4 )
 
 [node name="AreaDisparo" type="Area2D" parent="." index="6"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDisparo" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AreaDeteccion" type="Area2D" parent="." index="7"]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDeteccion" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="AreaDisparo" to="." method="_on_AreaDisparo_body_entered"]
+[connection signal="body_exited" from="AreaDisparo" to="." method="_on_AreaDisparo_body_exited"]
+[connection signal="body_entered" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_entered"]
+[connection signal="body_exited" from="AreaDeteccion" to="." method="_on_AreaDeteccion_body_exited"]
 
 [editable path="Canion"]

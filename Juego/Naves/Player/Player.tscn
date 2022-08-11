@@ -28,6 +28,7 @@ can_sleep = false
 linear_damp = 1.5
 angular_damp = 4.5
 script = ExtResource( 10 )
+potencia_motor = 30
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708
