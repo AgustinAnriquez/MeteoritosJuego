@@ -41,14 +41,12 @@ func controlar_energia() -> void:
 ## Señales Internas
 func _on_AreaRecarga_body_entered(body):
 	if body is Player:
+		player_en_zona = true
 		nave_player = body
-	body.set_gravity_scale(0.1)
-	player_en_zona = true
-
 
 func _on_AreaRecarga_body_exited(body):
-	body.set_gravity_scale(0.0)
-	player_en_zona = false
+	if body is Player:
+		player_en_zona = false
 
 func _on_AreaCollision_body_entered(body):
 	if body.has_method("destruir"):

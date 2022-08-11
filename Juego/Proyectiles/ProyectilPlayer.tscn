@@ -4,3 +4,4 @@
 
 [node name="ProyectilPlayer" instance=ExtResource( 1 )]
 z_index = 40
+collision_mask = 70

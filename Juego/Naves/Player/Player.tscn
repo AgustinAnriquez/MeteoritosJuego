@@ -39,7 +39,7 @@ shape = SubResource( 1 )
 
 [node name="Canion" parent="." index="2"]
 proyectil = ExtResource( 12 )
-cadencia_disparo = 1.2
+cadencia_disparo = 0.2
 velocidad_proyectil = 1200
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]
@@ -65,6 +65,7 @@ position = Vector2( -13, 0 )
 
 [node name="LaserBeam2D" parent="." index="9" instance=ExtResource( 7 )]
 position = Vector2( 38.8909, 0 )
+radio_danio = 10
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
