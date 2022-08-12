@@ -26,7 +26,6 @@ func _ready() -> void:
 ## Metodos custom
 func controlar_energia(consumo:float) -> void:
 	energia += consumo
-	print("Energia Escudo: ", energia)
 	
 	if energia > energia_original:
 		energia = energia_original
@@ -37,7 +36,6 @@ func controlar_colisionador(esta_desactivado: bool) -> void:
 	$CollisionShape2D.set_deferred("disabled", esta_desactivado)
 
 func activar() -> void:
-	print("activar")
 	if energia <= 0.0:
 		return
 		

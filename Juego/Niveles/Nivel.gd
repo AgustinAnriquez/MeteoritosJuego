@@ -42,7 +42,8 @@ func conectar_seniales() -> void:
 	Eventos.connect("meteorito_destruido", self, "_on_meteorito_destruido")
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
-
+	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
+	
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
 	contenedor_proyectiles.name = "ContenedorProyectiles"
@@ -114,7 +115,10 @@ func crear_explosion(posicion:Vector2, numero:int =1, intervalo:float = 0.0, ran
 		yield(get_tree().create_timer(intervalo), "timeout")
 
 ## Conexion señales externas
-func _on_base_destruida(pos_partes: Array) -> void:
+func _on_spawn_orbital(enemigo: EnemigoOrbital) -> void:
+	contenedor_enemigos.add_child(enemigo)
+
+func _on_base_destruida(base:Node2D, pos_partes: Array) -> void:
 	for posicion in pos_partes:
 		crear_explosion(posicion)
 		yield(get_tree().create_timer(0.5), "timeout")

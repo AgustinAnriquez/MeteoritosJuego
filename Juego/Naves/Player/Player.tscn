@@ -65,7 +65,7 @@ position = Vector2( -13, 0 )
 
 [node name="LaserBeam2D" parent="." index="9" instance=ExtResource( 7 )]
 position = Vector2( 38.8909, 0 )
-radio_danio = 10
+radio_danio = 20
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

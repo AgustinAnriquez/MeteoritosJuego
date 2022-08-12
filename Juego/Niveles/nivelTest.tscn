@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -8,10 +8,9 @@
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/MeteoritoExplosion/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Niveles/Fondos/FondoPurpura.png" type="Texture" id=8]
-[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
-[ext_resource path="res://icon.png" type="Texture" id=10]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
-[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=13]
 
 [node name="nivelTest" type="Node2D"]
@@ -40,10 +39,6 @@ script = ExtResource( 11 )
 
 [node name="TweenCamara" type="Tween" parent="."]
 
-[node name="icon" type="Sprite" parent="."]
-position = Vector2( 1221.5, 911.515 )
-texture = ExtResource( 10 )
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -60,12 +55,16 @@ hitpoints = 100.0
 
 [node name="TriggersInterceptores" type="Node" parent="."]
 
-[node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 9 )]
-position = Vector2( 1473.66, 832.94 )
-tipo_peligro = "Enemigo"
-numero_peligros = 1
+[node name="BaseEnemiga" parent="." instance=ExtResource( 10 )]
+position = Vector2( -304.344, -373.756 )
+orbital = ExtResource( 9 )
 
-[node name="BaseEnemiga" parent="." instance=ExtResource( 12 )]
-position = Vector2( 266.969, 704.797 )
+[node name="BaseEnemiga2" parent="." instance=ExtResource( 10 )]
+position = Vector2( -272.308, 1196.02 )
+orbital = ExtResource( 9 )
+
+[node name="BaseEnemiga3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 2178.46, -448.507 )
+orbital = ExtResource( 9 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]

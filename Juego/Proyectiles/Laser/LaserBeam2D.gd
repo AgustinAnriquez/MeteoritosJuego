@@ -64,7 +64,6 @@ func cast_beam(delta: float) -> void:
 		collision_particles.position = cast_point
 		if get_collider().has_method("recibir_danio"):
 			get_collider().recibir_danio(radio_danio* delta)
-		print("se detecta choque")
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
@@ -92,5 +91,4 @@ func controlar_energia(consumo:float) -> void:
 	energia += consumo
 	if energia > energia_original:
 		energia = energia_original
-	print("Energia Laser;", energia)
 

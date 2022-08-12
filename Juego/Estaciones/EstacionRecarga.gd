@@ -37,7 +37,6 @@ func controlar_energia() -> void:
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
 		$VacioSFX.play()
-	print("Energia estacion: ", energia)
 ## Señales Internas
 func _on_AreaRecarga_body_entered(body):
 	if body is Player:
