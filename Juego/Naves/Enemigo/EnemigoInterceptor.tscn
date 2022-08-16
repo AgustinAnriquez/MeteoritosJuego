@@ -15,6 +15,7 @@ extents = Vector2( 77.0608, 64.0845 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "default"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteSpawn:visible")
 tracks/0/interp = 1

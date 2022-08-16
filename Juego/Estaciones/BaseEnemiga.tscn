@@ -24,6 +24,7 @@ radius = 37.0
 height = 14.0
 
 [sub_resource type="Animation" id=4]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites:rotation_degrees")
 tracks/0/interp = 1

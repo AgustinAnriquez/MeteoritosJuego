@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
+[ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=13]
 
 [node name="nivelTest" type="Node2D"]
@@ -20,6 +21,7 @@ meteorito = ExtResource( 5 )
 explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 6 )
 enemigo_interceptor = ExtResource( 13 )
+rele_masa = ExtResource( 12 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 2 )
@@ -55,16 +57,11 @@ hitpoints = 100.0
 
 [node name="TriggersInterceptores" type="Node" parent="."]
 
-[node name="BaseEnemiga" parent="." instance=ExtResource( 10 )]
-position = Vector2( -304.344, -373.756 )
-orbital = ExtResource( 9 )
+[node name="ContenedorEstaciones" type="Node" parent="."]
 
-[node name="BaseEnemiga2" parent="." instance=ExtResource( 10 )]
-position = Vector2( -272.308, 1196.02 )
-orbital = ExtResource( 9 )
+[node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
-[node name="BaseEnemiga3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 2178.46, -448.507 )
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 10 )]
 orbital = ExtResource( 9 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
