@@ -8,11 +8,11 @@
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/MeteoritoExplosion/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Niveles/Fondos/FondoPurpura.png" type="Texture" id=8]
-[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Juego/UI/HUD.tscn" type="PackedScene" id=14]
 
 [node name="nivelTest" type="Node2D"]
 script = ExtResource( 3 )
@@ -22,6 +22,9 @@ explosion_meteorito = ExtResource( 7 )
 sector_meteoritos = ExtResource( 6 )
 enemigo_interceptor = ExtResource( 13 )
 rele_masa = ExtResource( 12 )
+tiempo_limite = 30
+
+[node name="HUD" parent="." instance=ExtResource( 14 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 2 )
@@ -55,13 +58,24 @@ texture = ExtResource( 8 )
 position = Vector2( 1012.46, 417.556 )
 hitpoints = 100.0
 
+[node name="Escudo" parent="Player" index="4"]
+visible = true
+
 [node name="TriggersInterceptores" type="Node" parent="."]
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
+[node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 10 )]
+
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
 
-[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 10 )]
-orbital = ExtResource( 9 )
+[node name="RestartTimer" type="Timer" parent="."]
+
+[node name="ActualizadorTimer" type="Timer" parent="."]
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
+[connection signal="timeout" from="ActualizadorTimer" to="." method="_on_ActualizadorTimer_timeout"]
+
+[editable path="Player"]
+[editable path="Player/Canion"]
