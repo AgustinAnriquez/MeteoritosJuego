@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
@@ -8,11 +8,16 @@
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/MeteoritoExplosion/ExplosionMeteorito.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Juego/Niveles/Fondos/FondoPurpura.png" type="Texture" id=8]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
 [ext_resource path="res://Juego/Estaciones/Rele/ReleMasa.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Juego/Naves/Enemigo/EnemigoInterceptor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Juego/UI/HUD.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Juego/Niveles/Musicas/POL-galactic-trek-short.wav" type="AudioStream" id=17]
+[ext_resource path="res://Juego/Niveles/Musicas/POL-combat-plan-short.wav" type="AudioStream" id=18]
 
 [node name="nivelTest" type="Node2D"]
 script = ExtResource( 3 )
@@ -23,6 +28,8 @@ sector_meteoritos = ExtResource( 6 )
 enemigo_interceptor = ExtResource( 13 )
 rele_masa = ExtResource( 12 )
 tiempo_limite = 30
+musica_nivel = ExtResource( 17 )
+musica_combate = ExtResource( 18 )
 
 [node name="HUD" parent="." instance=ExtResource( 14 )]
 
@@ -50,7 +57,7 @@ script = ExtResource( 11 )
 motion_mirroring = Vector2( 256, 256 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 1536.38, 131.323 )
+position = Vector2( 3052.42, -97.7797 )
 scale = Vector2( 256, 256 )
 texture = ExtResource( 8 )
 
@@ -58,16 +65,25 @@ texture = ExtResource( 8 )
 position = Vector2( 1012.46, 417.556 )
 hitpoints = 100.0
 
-[node name="Escudo" parent="Player" index="4"]
-visible = true
-
 [node name="TriggersInterceptores" type="Node" parent="."]
+
+[node name="SectorDePeligro" parent="TriggersInterceptores" instance=ExtResource( 9 )]
+position = Vector2( 336.529, 279.383 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
 
 [node name="ContenedorEstaciones" type="Node" parent="."]
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" instance=ExtResource( 10 )]
+position = Vector2( 1565.23, -195.024 )
 
 [node name="ContenedorBasesEnemigas" type="Node" parent="."]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" instance=ExtResource( 15 )]
+position = Vector2( 273.914, 1664.88 )
+hitpoints = 200.0
+orbital = ExtResource( 16 )
+numero_orbitales = 8
 
 [node name="RestartTimer" type="Timer" parent="."]
 
@@ -79,3 +95,4 @@ visible = true
 
 [editable path="Player"]
 [editable path="Player/Canion"]
+[editable path="Player/Escudo"]

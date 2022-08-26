@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://TemporalAssets/kenney_spaceshooterextension/PNG/Sprites/Station/EstacionEspacial.png" type="Texture" id=1]
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.gd" type="Script" id=3]
 [ext_resource path="res://Juego/SFX/cargaSFX.tres" type="AudioStream" id=4]
 [ext_resource path="res://Juego/SFX/vacioSFX.tres" type="AudioStream" id=5]
+[ext_resource path="res://Juego/UI/fuenteBarra.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 92.522
@@ -90,7 +91,33 @@ tracks/2/keys = {
 "values": [ Color( 0.419608, 0.396078, 0.403922, 0.396078 ) ]
 }
 
-[node name="EstacionRecarga" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0666667, 0.654902, 0.0117647, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="EstacionRecarga" type="Node2D" groups=[
+"minimapa",
+]]
 script = ExtResource( 3 )
 
 [node name="AreaCollision" type="Area2D" parent="."]
@@ -116,6 +143,20 @@ stream = ExtResource( 4 )
 
 [node name="VacioSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="BarraEnergia" type="ProgressBar" parent="."]
+margin_left = -85.0
+margin_top = -222.0
+margin_right = 85.0
+margin_bottom = -192.0
+rect_min_size = Vector2( 170, 30 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+value = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="AreaCollision" to="." method="_on_AreaCollision_body_entered"]
 [connection signal="body_entered" from="AreaRecarga" to="." method="_on_AreaRecarga_body_entered"]

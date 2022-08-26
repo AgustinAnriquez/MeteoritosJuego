@@ -1,4 +1,6 @@
+## EstacionRecarga.gd
 extends Node2D
+class_name EstacionRecarga
 
 ## Atributos Export
 export var energia:float = 6.0
@@ -6,12 +8,17 @@ export var radio_energia_entregada:float = 0.05
 
 ## Atributos Onready
 onready var carga_sfx:AudioStreamPlayer = $CargaSFX
+onready var barra_energia:ProgressBar = $BarraEnergia
 
 ## Atributos
 var nave_player:Player = null
 var player_en_zona:bool = false
 
 ## Metodos
+func _ready() -> void:
+	barra_energia.max_value = energia
+	barra_energia.value = energia
+
 func _unhandled_input(event):
 	if not puede_recargar(event):
 		return
@@ -42,6 +49,8 @@ func controlar_energia() -> void:
 	energia -= radio_energia_entregada
 	if energia <= 0.0:
 		$VacioSFX.play()
+		
+	barra_energia.value = energia
 ## Señales Internas
 func _on_AreaRecarga_body_entered(body):
 	if body is Player:
