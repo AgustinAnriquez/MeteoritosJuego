@@ -36,14 +36,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("disparo_secundario"):
 		laser.set_is_casting(false)
 	
-	# Control estela y sonido motor
+	# Control estela
 	if event.is_action_pressed("mover_adelante"):
 		estela.set_max_points(estela_maxima)
-		motor_sfx.sonido_on()
 	elif event.is_action_pressed("mover_atras"):
 		estela.set_max_points(0)
-		motor_sfx.sonido_on()
 	
+	# Apagado sonido Motor
 	if (event.is_action_released("mover_adelante") 
 		or event.is_action_released("mover_atras")):
 			motor_sfx.sonido_off()
@@ -71,12 +70,14 @@ func player_input() -> void:
 	if not esta_input_activo():
 		return
 	
-	# Empuje
+	# Empuje y Encendido sonido motor
 	empuje = Vector2.ZERO
 	if Input.is_action_pressed("mover_adelante"):
 		empuje = Vector2(potencia_motor, 0)
+		motor_sfx.sonido_on()
 	elif Input.is_action_pressed("mover_atras"):
 		empuje = Vector2(-potencia_motor, 0)
+		motor_sfx.sonido_on()
 	# Rotacion
 	dir_rotacion = 0
 	if Input.is_action_pressed("rotar_antihorario"):
