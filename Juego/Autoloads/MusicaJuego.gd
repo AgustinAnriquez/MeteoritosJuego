@@ -6,6 +6,12 @@ onready var musica_nivel:AudioStreamPlayer = $MusicaNivel
 onready var musica_combate:AudioStreamPlayer = $MusicaCombate
 onready var tween_on:Tween = $TweenMusicaOn
 onready var tween_off:Tween = $TweenMusicaOff
+onready var lista_musicas:Dictionary = {
+	"menu_principal": $MusicaMenuPrincipal
+} setget ,get_lista_musicas
+
+func get_lista_musicas() -> Dictionary:
+	return lista_musicas
 
 ## Atributos Export
 export var tiempo_transicion:float = 4.0
@@ -15,6 +21,13 @@ export(float, -50.0, -20.0, 5.0) var volumen_apagado = -40.0
 var vol_original_musica_off:float = 0.0
 
 ## Metodos Custom
+func play_boton() -> void:
+	$BotonMenu.play()
+
+func play_musica(musica: AudioStreamPlayer) -> void:
+	stop_todo()
+	musica.play()
+
 func transicion_musicas() -> void:
 	if musica_nivel.playing:
 		fade_in(musica_combate)

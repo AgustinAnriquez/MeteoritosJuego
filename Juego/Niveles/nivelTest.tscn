@@ -7,7 +7,7 @@
 [ext_resource path="res://Juego/Meteoritos/Meteorito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Juego/Meteoritos/SectorMeteoritos.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Juego/Explosiones/MeteoritoExplosion/ExplosionMeteorito.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Juego/Niveles/Fondos/FondoPurpura.png" type="Texture" id=8]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Juego/Niveles/CamaraJuego.gd" type="Script" id=11]
@@ -36,30 +36,12 @@ musica_combate = ExtResource( 18 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 2 )
 
-[node name="Fondo" type="Sprite" parent="."]
-visible = false
-position = Vector2( 3238.12, 272.548 )
-scale = Vector2( 256, 256 )
-z_index = -2
-z_as_relative = false
-texture = ExtResource( 8 )
-
 [node name="CamaraNivel" type="Camera2D" parent="."]
 script = ExtResource( 11 )
 
 [node name="TweenZoom" type="Tween" parent="CamaraNivel"]
 
 [node name="TweenCamara" type="Tween" parent="."]
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 256, 256 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 3052.42, -97.7797 )
-scale = Vector2( 256, 256 )
-texture = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1012.46, 417.556 )
@@ -88,6 +70,11 @@ numero_orbitales = 8
 [node name="RestartTimer" type="Timer" parent="."]
 
 [node name="ActualizadorTimer" type="Timer" parent="."]
+
+[node name="TriggetsLluviaMeteoritos" type="Node" parent="."]
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 8 )]
+color_fondo = Color( 0.0745098, 0.0862745, 0.305882, 1 )
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
