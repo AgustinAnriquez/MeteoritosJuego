@@ -15,7 +15,7 @@ func _ready() -> void:
 ## Metodos Custom
 func conectar_seniales() -> void:
 	Eventos.connect("nivel_iniciado", self, "fade_out")
-	Eventos.connect("niver_terminado", self, "fade_in")
+	Eventos.connect("nivel_terminado", self, "fade_in")
 	Eventos.connect("detecto_zona_recarga", self, "_on_detecto_zona_recarga")
 	Eventos.connect("cambio_numero_meteoritos", self, "_on_actualizar_info_meteoritos")
 	Eventos.connect("actualizar_tiempo", self, "_on_actualizar_info_tiempo")

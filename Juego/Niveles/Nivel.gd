@@ -11,6 +11,7 @@ onready var contenedor_enemigos:Node
 onready var actualizador_timer:Timer = $ActualizadorTimer
 
 ## Atributos Export
+export(String, FILE, "*.tscn") var prox_nivel = ""
 export var explosion:PackedScene = null
 export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
@@ -82,7 +83,13 @@ func conectar_seniales() -> void:
 	Eventos.connect("nave_en_sector_peligro", self, "_on_nave_en_sector_peligro")
 	Eventos.connect("base_destruida", self, "_on_base_destruida")
 	Eventos.connect("spawn_orbital", self, "_on_spawn_orbital")
+	Eventos.connect("nivel_completado", self, "_on_nivel_completado")
 	
+func _on_nivel_completado() -> void:
+	Eventos.emit_signal("nivel_terminado")
+	yield(get_tree().create_timer(1.0), "timeout")
+	get_tree().change_scene(prox_nivel)
+
 func crear_contenedores() -> void:
 	contenedor_proyectiles = Node.new()
 	contenedor_proyectiles.name = "ContenedorProyectiles"
