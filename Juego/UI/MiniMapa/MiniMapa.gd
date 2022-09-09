@@ -45,7 +45,7 @@ func _ready() -> void:
 	escala_grilla = zona_renderizado.rect_size / (get_viewport_rect().size *escala_zoom)
 	conectar_seniales()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player:
 		return
 			

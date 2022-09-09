@@ -65,7 +65,10 @@ mode = 3
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 4 )
+hitpoints = 8.0
 numero_explosiones = 1
+rango_max_ataque = 1400.0
+velocidad = 400.0
 
 [node name="Sprite" parent="." index="0"]
 rotation = -1.5708
@@ -79,7 +82,8 @@ shape = SubResource( 1 )
 
 [node name="Canion" parent="." index="2"]
 proyectil = ExtResource( 3 )
-cadencia_disparo = 1.5
+cadencia_disparo = 0.25
+velocidad_proyectil = 1000
 danio_proyectil = 1
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]

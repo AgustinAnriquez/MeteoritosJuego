@@ -41,12 +41,12 @@ func set_is_casting(cast: bool) -> void:
 		laser_sfx.play() 
 		cast_to = Vector2.ZERO
 		fill.points[1] = cast_to
-		appear()
+		modify_visibility(0, line_width)
 	else:
 		Eventos.emit_signal("ocultar_energia_laser")
 		laser_sfx.stop()
 		collision_particles.emitting = false
-		disappear()
+		modify_visibility(fill.width, 0)
 
 	set_physics_process(is_casting)
 	beam_particles.emitting = is_casting
@@ -75,17 +75,8 @@ func cast_beam(delta: float) -> void:
 	
 	controlar_energia(radio_desgaste *delta)
 
-func appear() -> void:
-	if tween.is_active():
-		tween.stop_all()
-	tween.interpolate_property(fill, "width", 0, line_width, growth_time * 2)
-	tween.start()
-
-
-func disappear() -> void:
-	if tween.is_active():
-		tween.stop_all()
-	tween.interpolate_property(fill, "width", fill.width, 0, growth_time)
+func modify_visibility(fill_width: float, line_width: float) -> void:
+	tween.interpolate_property(fill, "width", fill_width, line_width, growth_time)
 	tween.start()
 
 func controlar_energia(consumo:float) -> void:

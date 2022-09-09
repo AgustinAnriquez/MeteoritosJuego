@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=5]
+
+[node name="Nivel8" instance=ExtResource( 1 )]
+tiempo_limite = 50
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 5 )]
+position = Vector2( 3914.87, -799.147 )
+
+[node name="SectorDePeligro" parent="TriggersInterceptores" index="0" instance=ExtResource( 4 )]
+position = Vector2( 2663.82, -385.303 )
+tipo_peligro = "Enemigo"
+numero_peligros = 2
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 3 )]
+position = Vector2( -2183.38, -204.544 )
+hitpoints = 110.0
+orbital = ExtResource( 2 )
+numero_orbitales = 5
+
+[node name="StarFieldBackground" parent="." index="10"]
+color_fondo = Color( 0.0627451, 0.0666667, 0.180392, 1 )
+
+[editable path="Player"]
+[editable path="Player/Canion"]
+[editable path="Player/Escudo"]

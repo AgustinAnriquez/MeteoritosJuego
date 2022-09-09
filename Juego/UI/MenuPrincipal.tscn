@@ -2,14 +2,14 @@
 
 [ext_resource path="res://Juego/UI/MenuPrincipal.gd" type="Script" id=1]
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Juego/UI/fuenteBarra.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 80
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 1 )
+font_data = SubResource( 3 )
 
 [node name="MenuPrincipal" type="Node"]
 script = ExtResource( 1 )
@@ -19,9 +19,6 @@ nivel_inicial = "res://Juego/Niveles/Nivel1.tscn"
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BotonJugar" type="Button" parent="."]
 anchor_left = 0.5
@@ -34,9 +31,6 @@ margin_right = 330.706
 margin_bottom = -40.9716
 custom_fonts/font = SubResource( 2 )
 text = "jugar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BotonSalir" type="Button" parent="."]
 anchor_left = 0.5
@@ -49,9 +43,6 @@ margin_right = 270.364
 margin_bottom = 246.545
 custom_fonts/font = SubResource( 2 )
 text = "Salir"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="BotonJugar" to="." method="_on_BotonJugar_pressed"]
 [connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]

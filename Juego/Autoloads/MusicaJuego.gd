@@ -39,6 +39,7 @@ func transicion_musicas() -> void:
 func fade_in(musica_fade_in: AudioStreamPlayer) -> void:
 	var volumen_original = musica_fade_in.volume_db
 	musica_fade_in.volume_db = volumen_apagado
+	musica_fade_in.play()
 	tween_on.interpolate_property(
 		musica_fade_in,
 		"volume_db",
@@ -77,6 +78,6 @@ func stop_todo() -> void:
 			nodo.stop()
 
 
-func _on_TweenMusicaOff_tween_completed(object, key):
+func _on_TweenMusicaOff_tween_completed(object, _key):
 	object.stop()
 	object.volume_db = vol_original_musica_off

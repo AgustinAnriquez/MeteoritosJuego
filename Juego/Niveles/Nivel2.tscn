@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=5]
 
 [node name="Nivel2" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel3.tscn"
+tiempo_limite = 60
+
+[node name="SectorDePeligro" parent="TriggetsLluviaMeteoritos" index="0" instance=ExtResource( 2 )]
+position = Vector2( 974.296, 1337.97 )
+tipo_peligro = "Meteorite"
+numero_peligros = 8
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 3 )]
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 4 )]
+position = Vector2( 1003.68, 2536.76 )
+orbital = ExtResource( 5 )
+numero_orbitales = 2
+
+[node name="StarFieldBackground" parent="." index="10"]
+color_fondo = Color( 0.145098, 0.0509804, 0.196078, 1 )
 
 [editable path="Player"]
 [editable path="Player/Canion"]

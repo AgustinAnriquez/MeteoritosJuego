@@ -413,6 +413,7 @@ gravity_scale = 0.0
 linear_damp = 0.0
 angular_damp = 0.0
 script = ExtResource( 2 )
+hitpoints_base = 2.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

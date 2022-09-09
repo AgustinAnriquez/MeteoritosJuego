@@ -28,7 +28,10 @@ can_sleep = false
 linear_damp = 1.5
 angular_damp = 4.5
 script = ExtResource( 10 )
-potencia_motor = 30
+hitpoints = 40.0
+potencia_motor = 18
+potencia_rotacion = 260
+estela_maxima = 150
 
 [node name="Sprite" parent="." index="0"]
 rotation = 1.5708
@@ -38,9 +41,11 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Canion" parent="." index="2"]
+position = Vector2( -1.124, 0 )
 proyectil = ExtResource( 12 )
-cadencia_disparo = 0.2
-velocidad_proyectil = 1200
+cadencia_disparo = 0.25
+velocidad_proyectil = 1500
+danio_proyectil = 1
 
 [node name="PuntoIzquierdo" parent="Canion" index="0"]
 position = Vector2( 0, -28 )

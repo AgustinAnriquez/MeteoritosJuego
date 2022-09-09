@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Juego/UI/MenuVictoria.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Juego/UI/fuenteBarra.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Juego/Fuentes/fuenteAdvertencia.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = SubResource( 3 )
+
+[node name="MenuVictoria" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="BotonSalir" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.636
+margin_top = 49.545
+margin_right = 270.364
+margin_bottom = 246.545
+custom_fonts/font = SubResource( 2 )
+text = "Salir"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -635.5
+margin_top = -138.809
+margin_right = 635.5
+margin_bottom = -81.8087
+custom_fonts/font = SubResource( 4 )
+text = "Has terminado el juego! Felicidades"
+
+[connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]

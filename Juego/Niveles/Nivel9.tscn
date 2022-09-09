@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/BaseEnemiga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/Naves/Enemigo/EnemigoOrbital.tscn" type="PackedScene" id=5]
+
+[node name="Nivel9" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel10.tscn"
+tiempo_limite = 160
+
+[node name="SectorDePeligro" parent="TriggetsLluviaMeteoritos" index="0" instance=ExtResource( 2 )]
+position = Vector2( 1540.52, -3134.86 )
+tipo_peligro = "Meteorite"
+numero_peligros = 9
+
+[node name="SectorDePeligro2" parent="TriggetsLluviaMeteoritos" index="1" instance=ExtResource( 2 )]
+position = Vector2( 3868.12, -437.267 )
+tipo_peligro = "Meteorite"
+numero_peligros = 9
+
+[node name="SectorDePeligro3" parent="TriggetsLluviaMeteoritos" index="2" instance=ExtResource( 2 )]
+position = Vector2( -3074.32, 1109.98 )
+tipo_peligro = "Meteorite"
+numero_peligros = 9
+
+[node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( 1607.79, -1849.97 )
+
+[node name="EstacionRecarga2" parent="ContenedorEstaciones" index="1" instance=ExtResource( 4 )]
+position = Vector2( -4157.39, 2448.69 )
+
+[node name="SectorDePeligro" parent="TriggersInterceptores" index="0" instance=ExtResource( 2 )]
+position = Vector2( -1005.72, 228.982 )
+tipo_peligro = "Enemigo"
+numero_peligros = 3
+
+[node name="SectorDePeligro2" parent="TriggersInterceptores" index="1" instance=ExtResource( 2 )]
+position = Vector2( -3264.11, -1355.93 )
+tipo_peligro = "Enemigo"
+numero_peligros = 3
+
+[node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 3 )]
+position = Vector2( -4866.99, -2523.29 )
+hitpoints = 110.0
+orbital = ExtResource( 5 )
+numero_orbitales = 3
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 3 )]
+position = Vector2( 6262.47, -338.737 )
+hitpoints = 110.0
+numero_orbitales = 3
+
+[editable path="Player"]
+[editable path="Player/Canion"]
+[editable path="Player/Escudo"]
