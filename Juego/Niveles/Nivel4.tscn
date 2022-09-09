@@ -10,6 +10,11 @@
 prox_nivel = "res://Juego/Niveles/Nivel5.tscn"
 tiempo_limite = 80
 
+[node name="SectorDePeligro" parent="TriggetsLluviaMeteoritos" index="0" instance=ExtResource( 5 )]
+position = Vector2( 5633.63, -257.709 )
+tipo_peligro = "Meteorite"
+numero_peligros = 6
+
 [node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 4 )]
 position = Vector2( 3735.55, -71.8375 )
 
@@ -20,6 +25,12 @@ numero_peligros = 2
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 2 )]
 position = Vector2( -457.964, -31.4288 )
+hitpoints = 70.0
+orbital = ExtResource( 3 )
+numero_orbitales = 4
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 2 )]
+position = Vector2( 5601.19, -1787.44 )
 hitpoints = 70.0
 orbital = ExtResource( 3 )
 numero_orbitales = 4

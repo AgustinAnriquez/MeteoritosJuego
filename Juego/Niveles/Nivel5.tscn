@@ -21,12 +21,12 @@ position = Vector2( 3027.38, -480.413 )
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 3 )]
 position = Vector2( -3879.22, -812.661 )
 orbital = ExtResource( 5 )
-numero_orbitales = 2
+numero_orbitales = 3
 
 [node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 3 )]
 position = Vector2( 7448.65, 2280.84 )
 orbital = ExtResource( 5 )
-numero_orbitales = 2
+numero_orbitales = 3
 
 [editable path="Player"]
 [editable path="Player/Canion"]

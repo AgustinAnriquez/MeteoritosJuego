@@ -7,7 +7,17 @@
 [ext_resource path="res://Juego/Estaciones/EstacionRecarga.tscn" type="PackedScene" id=5]
 
 [node name="Nivel8" instance=ExtResource( 1 )]
-tiempo_limite = 50
+tiempo_limite = 140
+
+[node name="SectorDePeligro" parent="TriggetsLluviaMeteoritos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 662.827, -2273.57 )
+tipo_peligro = "Meteorite"
+numero_peligros = 8
+
+[node name="SectorDePeligro2" parent="TriggetsLluviaMeteoritos" index="1" instance=ExtResource( 4 )]
+position = Vector2( -2323.46, -1803.18 )
+tipo_peligro = "Meteorite"
+numero_peligros = 8
 
 [node name="EstacionRecarga" parent="ContenedorEstaciones" index="0" instance=ExtResource( 5 )]
 position = Vector2( 3914.87, -799.147 )
@@ -19,6 +29,18 @@ numero_peligros = 2
 
 [node name="BaseEnemiga" parent="ContenedorBasesEnemigas" index="0" instance=ExtResource( 3 )]
 position = Vector2( -2183.38, -204.544 )
+hitpoints = 110.0
+orbital = ExtResource( 2 )
+numero_orbitales = 3
+
+[node name="BaseEnemiga2" parent="ContenedorBasesEnemigas" index="1" instance=ExtResource( 3 )]
+position = Vector2( 610.474, -4024.71 )
+hitpoints = 110.0
+orbital = ExtResource( 2 )
+numero_orbitales = 3
+
+[node name="BaseEnemiga3" parent="ContenedorBasesEnemigas" index="2" instance=ExtResource( 3 )]
+position = Vector2( 7032.06, -974.279 )
 hitpoints = 110.0
 orbital = ExtResource( 2 )
 numero_orbitales = 5
